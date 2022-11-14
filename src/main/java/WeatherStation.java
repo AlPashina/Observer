@@ -5,7 +5,7 @@ public class WeatherStation extends Publisher{
     double pressure; //атмосферное давление
     double humidity; //относительная влажность
 
-    void WeatherChange(int times) throws InterruptedException {
+    void WeatherChange(int times,int milisec) throws InterruptedException {
         Random random = new Random();
 
         for (int i = 0; i < times; i++) {
@@ -13,8 +13,7 @@ public class WeatherStation extends Publisher{
             this.pressure =Math.round(((Math.random()*((755-743)+ 1)) +743)*100.0)/ 100.0;
             this.humidity=Math.round(((Math.random()*((100-5)+ 1)) +5)*100.0)/ 100.0;
             notifyObservers(temperature,pressure,humidity);
+            Thread.sleep(milisec);
         }
-
-        Thread.sleep(1000);
-        }
+    }
 }
